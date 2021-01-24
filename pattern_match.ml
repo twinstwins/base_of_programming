@@ -12,9 +12,18 @@
 
 (* 目的: ふたつの整数の組 を受け取り、その和を返す *)
 (* add: int * int -> int *)
-let add pair = match pair with
+(* let add pair = match pair with
 (a,b) -> 0
 
 let test1 = add (0,0) = 0
 let test2 = add (2,5) = 7
-let test3 = add (5,5) = 10
+let test3 = add (5,5) = 10 *)
+
+(* 目的: x軸に対して対称な座標を返す *)
+(* int * int -> int * int *)
+let taisho_x zahyo = match zahyo with
+  (x,y) -> (-x,0)
+
+  let test1 = taisho_x (0,0) = (0,0)
+  let test2 = taisho_x (1,0) = (-1,0)
+  let test3 = taisho_x (10,0) = (-10,0)
