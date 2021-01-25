@@ -7,19 +7,19 @@ match [1; 2; 3;] with
   - first :: rest 最初の要素がfirstで残りのリストがrest *)
   (* 受け取ったリストlstに0が含まれているかを調べる *)
   (* contain_zero: int list -> bool *)
-  let contain_zero lst = match lst with
+  let rec contain_zero lst = match lst with
     [] -> false
-    | first :: rest -> if first = 0 then false
-                                    else false
+    | first :: rest -> if first = 0 then true
+                                    else contain_zero rest
 
-  let test1 0 contain_zero [] = false
-  let test2 0 contain_zero [0; 2] = true
-  let test3 0 contain_zero [1; 1] = false
-  let test4 0 contain_zero [1; 2; 3; 4;] = false
-  let test5 0 contain_zero [1; 2; 3; 4; 0] = false
+  let test1 = contain_zero [] = false
+  let test2 = contain_zero [0; 2] = true
+  let test3 = contain_zero [1; 1] = false
+  let test4 = contain_zero [1; 2; 3; 4;] = false
+  let test5 = contain_zero [1; 2; 3; 4; 0] = true
 
-  (* 目的: 受け取ったリストの各要素の和を求める *)
-(* int list -> int *)
+(* 目的: 受け取ったリストの各要素の和を求める *)
+(* sum: int list -> int *)
 let rec sum lst = match lst with
 [] -> 0
 | first :: rest -> first + sum rest
