@@ -17,3 +17,16 @@ match [1; 2; 3;] with
   let test3 0 contain_zero [1; 1] = false
   let test4 0 contain_zero [1; 2; 3; 4;] = false
   let test5 0 contain_zero [1; 2; 3; 4; 0] = false
+
+  (* 目的: 受け取ったリストの各要素の和を求める *)
+(* int list -> int *)
+let rec sum lst = match lst with
+[] -> 0
+| first :: rest -> first + sum rest
+
+(* テスト *)
+let test1 = sum [] = 0
+let test2 = sum [2] = 2
+let test3 = sum [1; 3] = 4
+let test4 = sum [1; 3; 6] = 10
+let test5 = sum [1; 3; 6; 5;] = 15
